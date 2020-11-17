@@ -28,6 +28,25 @@ type BodyBase = {
     hideTitleWhenPinned: boolean;
 };
 
+type JsonComponents = {
+    [key: string]: string | number | boolean | null;
+    id: string;
+    type: string;
+};
+
+interface JsonBody {
+    title: string;
+    name: string;
+    summary: string | null;
+    font: Fonts;
+    script: string;
+    hideTitleWhenPinned: boolean;
+    alignCenter: boolean;
+    content: JsonComponents[];
+    variables: JsonComponents[];
+    eyeCatchingImageId: string | null;
+}
+
 interface Body extends BodyBase {
     name: string;
 }
@@ -35,8 +54,6 @@ interface Body extends BodyBase {
 interface Options extends Partial<BodyBase> {
     urlName?: string;
 }
-
-type NoNullFields<T> = { [K in keyof T]: NonNullable<T[K]> };
 
 export default class Pages {
     private _urlName: string;
@@ -62,31 +79,33 @@ export default class Pages {
      * @memberof Pages
      */
     constructor(json: string);
-    constructor(detail?: Options | string) {
-        if (typeof detail === 'string') {
-            const json = JSON.parse(detail) as NoNullFields<Body>;
+    constructor(context?: Options | string) {
+        if (typeof context === 'string') {
+            const json = JSON.parse(context) as JsonBody;
 
             this._urlName = json.name;
-            this._title = json.title;
+            this._title = json.title || '';
             this._summary = json.summary;
-            this._content = json.content;
-            this._variables = json.variables;
+            this._content = json.content || [];
+            // TODO: 変数
+            this._variables = [];
             this._script = json.script;
             this._eyeCatchingImageId = json.eyeCatchingImageId;
             this._font = json.font;
             this._alignCenter = json.alignCenter;
             this._hideTitleWhenPinned = json.hideTitleWhenPinned;
         } else {
-            this._urlName = detail?.urlName || Date.now().toString();
-            this._title = detail?.title || '';
-            this._summary = detail?.summary || null;
-            this._content = detail?.content || [];
-            this._variables = detail?.variables || [];
-            this._script = detail?.script || '';
-            this._eyeCatchingImageId = detail?.eyeCatchingImageId || null;
-            this._font = detail?.font || 'sans-serif';
-            this._alignCenter = detail?.alignCenter || false;
-            this._hideTitleWhenPinned = detail?.hideTitleWhenPinned || false;
+            this._urlName = context?.urlName || Date.now().toString();
+            this._title = context?.title || '';
+            this._summary = context?.summary || null;
+            this._content = context?.content || [];
+            // TODO: 変数
+            this._variables = [];
+            this._script = context?.script || '';
+            this._eyeCatchingImageId = context?.eyeCatchingImageId || null;
+            this._font = context?.font || 'sans-serif';
+            this._alignCenter = context?.alignCenter || false;
+            this._hideTitleWhenPinned = context?.hideTitleWhenPinned || false;
         }
     }
 
@@ -210,23 +229,23 @@ export default class Pages {
         this._addComponent(new MPRadioButton(variableName, title, values, def));
         return this;
     }
-    addTextInput(variableName: string, title: string, def: string): Pages {
+    addTextInput(variableName: string, title: string, def = ''): Pages {
         this._addComponent(new MPTextInput(variableName, title, def));
         return this;
     }
-    addTextareaInput(variableName: string, title: string, def: string): Pages {
+    addTextareaInput(variableName: string, title: string, def = ''): Pages {
         this._addComponent(new MPTextareaInput(variableName, title, def));
         return this;
     }
-    addNumberInput(variableName: string, title: string, def: number): Pages {
+    addNumberInput(variableName: string, title: string, def = 0): Pages {
         this._addComponent(new MPNumberInput(variableName, title, def));
         return this;
     }
-    addSwitch(variableName: string, title: string, def: boolean): Pages {
+    addSwitch(variableName: string, title: string, def = false): Pages {
         this._addComponent(new MPSwitch(variableName, title, def));
         return this;
     }
-    addCounter(variableName: string, title: string, inc: number): Pages {
+    addCounter(variableName: string, title: string, inc = 1): Pages {
         this._addComponent(new MPCounter(variableName, title, inc));
         return this;
     }

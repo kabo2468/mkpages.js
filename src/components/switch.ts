@@ -5,7 +5,7 @@ export default class MPSwitch extends Component {
     public text: string;
     public default: boolean;
     constructor(variableName: string, title: string, def: boolean) {
-        super('if');
+        super('switch');
         this.name = variableName;
         this.text = title;
         this.default = def;
