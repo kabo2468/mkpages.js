@@ -216,7 +216,7 @@ export default class Pages {
         this._addComponent(new MPTextarea(text));
         return this;
     }
-    addCanvas(canvasId: string, width?: number, height?: number): Pages {
+    addCanvas(canvasId: string, width = 300, height = 200): Pages {
         this._addComponent(new MPCanvas(canvasId, width, height));
         return this;
     }
@@ -253,7 +253,7 @@ export default class Pages {
         this._addComponent(new MPIf(variableName, children));
         return this;
     }
-    addPostForm(text: string, attachCanvasImage?: boolean, canvasId?: string): Pages {
+    addPostForm(text: string, attachCanvasImage = false, canvasId = ''): Pages {
         this._addComponent(new MPPost(text, attachCanvasImage, canvasId));
         return this;
     }
