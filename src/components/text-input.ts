@@ -1,13 +1,13 @@
-import Component from '../component';
+import { Component } from '../component';
 
-export default class MPTextInput extends Component {
+export class MPTextInput extends Component {
     public name: string;
     public text: string;
     public default: string;
-    constructor(variableName: string, title: string, def: string) {
+    constructor(variableName: string, title: string, defaultValue = '') {
         super('textInput');
         this.name = variableName;
         this.text = title;
-        this.default = def;
+        this.default = defaultValue;
     }
 }

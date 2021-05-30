@@ -1,13 +1,15 @@
-import Component from '../component';
+import { Component } from '../component';
 
-export default class MPPost extends Component {
+export class MPPost extends Component {
     public text: string;
     public attachCanvasImage: boolean;
     public canvasId: string;
-    constructor(text: string, attachCanvasImage: boolean, canvasId: string) {
+    constructor(text: string);
+    constructor(text: string, canvasId: string);
+    constructor(text: string, canvasId = '') {
         super('post');
         this.text = text;
-        this.attachCanvasImage = attachCanvasImage;
+        this.attachCanvasImage = canvasId ? true : false;
         this.canvasId = canvasId;
     }
 }

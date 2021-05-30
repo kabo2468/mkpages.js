@@ -1,6 +1,6 @@
-import Component from '../component';
+import { Component } from '../component';
 
-export default class MPImage extends Component {
+export class MPImage extends Component {
     public fileId: string;
     constructor(fileId: string) {
         super('image');

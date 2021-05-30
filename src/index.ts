@@ -1,18 +1,4 @@
-import Component from './component';
-import MPButton, { ButtonSettings } from './components/button';
-import MPCanvas from './components/canvas';
-import MPImage from './components/image';
-import MPNumberInput from './components/number-input';
-import MPSwitch from './components/switch';
-import MPRadioButton from './components/radio-button';
-import MPSection from './components/section';
-import MPText from './components/text';
-import MPTextInput from './components/text-input';
-import MPTextarea from './components/textarea';
-import MPTextareaInput from './components/textarea-input';
-import MPCounter from './components/counter';
-import MPIf from './components/if';
-import MPPost from './components/post';
+import { Component } from './component';
 
 type Fonts = 'serif' | 'sans-serif';
 
@@ -55,7 +41,7 @@ interface Options extends Partial<BodyBase> {
     urlName?: string;
 }
 
-export default class Pages {
+export class Pages {
     private _urlName: string;
     private _title: string;
     private _summary: string | null;
@@ -196,65 +182,8 @@ export default class Pages {
         return this;
     }
 
-    private _addComponent(component: Component): Pages {
-        this._content.push(component);
-        return this;
-    }
-    addSection(title: string, ...components: Component[]): Pages {
-        this._addComponent(new MPSection(title, components));
-        return this;
-    }
-    addText(text: string): Pages {
-        this._addComponent(new MPText(text));
-        return this;
-    }
-    addImage(fileId: string): Pages {
-        this._addComponent(new MPImage(fileId));
-        return this;
-    }
-    addTextarea(text: string): Pages {
-        this._addComponent(new MPTextarea(text));
-        return this;
-    }
-    addCanvas(canvasId: string, width = 300, height = 200): Pages {
-        this._addComponent(new MPCanvas(canvasId, width, height));
-        return this;
-    }
-    // TODO: actionによって必要な引数を教える
-    addButton(settings: Partial<ButtonSettings>): Pages {
-        this._addComponent(new MPButton(settings));
-        return this;
-    }
-    addRadioButton(variableName: string, title: string, values: string[], def: string): Pages {
-        this._addComponent(new MPRadioButton(variableName, title, values, def));
-        return this;
-    }
-    addTextInput(variableName: string, title: string, def = ''): Pages {
-        this._addComponent(new MPTextInput(variableName, title, def));
-        return this;
-    }
-    addTextareaInput(variableName: string, title: string, def = ''): Pages {
-        this._addComponent(new MPTextareaInput(variableName, title, def));
-        return this;
-    }
-    addNumberInput(variableName: string, title: string, def = 0): Pages {
-        this._addComponent(new MPNumberInput(variableName, title, def));
-        return this;
-    }
-    addSwitch(variableName: string, title: string, def = false): Pages {
-        this._addComponent(new MPSwitch(variableName, title, def));
-        return this;
-    }
-    addCounter(variableName: string, title: string, inc = 1): Pages {
-        this._addComponent(new MPCounter(variableName, title, inc));
-        return this;
-    }
-    addIf(variableName: string, children: Component[]): Pages {
-        this._addComponent(new MPIf(variableName, children));
-        return this;
-    }
-    addPostForm(text: string, attachCanvasImage = false, canvasId = ''): Pages {
-        this._addComponent(new MPPost(text, attachCanvasImage, canvasId));
+    addComponents(...component: Component[]): Pages {
+        this._content.push(...component);
         return this;
     }
 }

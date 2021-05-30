@@ -1,6 +1,6 @@
-import Component from '../component';
+import { Component } from '../component';
 
-export default class MPRadioButton extends Component {
+export class MPRadioButton extends Component {
     public name: string;
     public title: string;
     public values: string[];

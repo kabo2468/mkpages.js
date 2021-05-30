@@ -1,4 +1,4 @@
-import Component from '../component';
+import { Component } from '../component';
 
 export type Actions = 'dialog' | 'resetRandom' | 'pushEvent' | 'callAiScript';
 
@@ -13,7 +13,7 @@ export type ButtonSettings = {
     fn: string | null;
 };
 
-export default class MPButton extends Component {
+export class MPButton extends Component {
     public text: string;
     public action: Actions;
     public primary: boolean;

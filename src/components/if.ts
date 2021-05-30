@@ -1,6 +1,6 @@
-import Component from '../component';
+import { Component } from '../component';
 
-export default class MPIf extends Component {
+export class MPIf extends Component {
     public var: string;
     public children: Component[];
     constructor(variable: string, children: Component[]) {
