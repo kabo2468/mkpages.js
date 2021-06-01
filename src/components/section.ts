@@ -9,8 +9,8 @@ export class Section extends Component {
         this.children = children;
     }
 
-    addComponent(component: Component): MPSection {
-        this.children.push(component);
+    addComponents(...components: Component[]): Section {
+        this.children.push(...components);
         return this;
     }
 }
