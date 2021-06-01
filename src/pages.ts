@@ -37,7 +37,7 @@ interface Body extends BodyBase {
     name: string;
 }
 
-interface Options extends Partial<BodyBase> {
+interface Settings extends Partial<BodyBase> {
     urlName?: string;
 }
 
@@ -55,17 +55,17 @@ export default class Pages {
 
     /**
      * Creates an instance of Pages from object.
-     * @param {Options} [detail]
+     * @param {Settings} [detail]
      * @memberof Pages
      */
-    constructor(object?: Options);
+    constructor(object?: Settings);
     /**
      * Creates an instance of Pages from JSON.
      * @param {string} [json]
      * @memberof Pages
      */
     constructor(json: string);
-    constructor(context?: Options | string) {
+    constructor(context?: Settings | string) {
         if (typeof context === 'string') {
             const json = JSON.parse(context) as JsonBody;
 
