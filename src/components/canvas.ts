@@ -1,9 +1,9 @@
 import { Component } from '../component';
 
 export class Canvas extends Component {
-    public name: string;
-    public width: number;
-    public height: number;
+    private name: string;
+    private width: number;
+    private height: number;
 
     constructor(canvasId: string, width = 300, height = 200) {
         super('canvas');

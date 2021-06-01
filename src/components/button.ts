@@ -14,14 +14,14 @@ type ButtonSettings = {
 };
 
 export class Button extends Component {
-    public text: string;
-    public action: Actions;
-    public primary: boolean;
-    public content: string | null = null;
-    public event: string | null = null;
-    public message: string | null = null;
-    public var: string | null = null;
-    public fn: string | null = null;
+    private text: string;
+    private action: Actions;
+    private primary: boolean;
+    private content: string | null = null;
+    private event: string | null = null;
+    private message: string | null = null;
+    private var: string | null = null;
+    private fn: string | null = null;
 
     constructor(
         action: 'dialog',

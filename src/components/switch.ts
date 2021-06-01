@@ -1,9 +1,9 @@
 import { Component } from '../component';
 
 export class Switch extends Component {
-    public name: string;
-    public text: string;
-    public default: boolean;
+    private name: string;
+    private text: string;
+    private default: boolean;
     constructor(variableName: string, title: string, defaultValue = false) {
         super('switch');
         this.name = variableName;

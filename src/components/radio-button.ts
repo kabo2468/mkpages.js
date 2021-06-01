@@ -1,10 +1,10 @@
 import { Component } from '../component';
 
 export class RadioButton extends Component {
-    public name: string;
-    public title: string;
-    public values: string[];
-    public default: string;
+    private name: string;
+    private title: string;
+    private values: string[];
+    private default: string;
     constructor(variableName: string, title: string, values: string[], defaultValue: string) {
         super('radioButton');
         this.name = variableName;

@@ -1,9 +1,9 @@
 import { Component } from '../component';
 
 export class TextInput extends Component {
-    public name: string;
-    public text: string;
-    public default: string;
+    private name: string;
+    private text: string;
+    private default: string;
     constructor(variableName: string, title: string, defaultValue = '') {
         super('textInput');
         this.name = variableName;

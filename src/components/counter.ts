@@ -1,9 +1,9 @@
 import { Component } from '../component';
 
 export class Counter extends Component {
-    public name: string;
-    public text: string;
-    public inc: number;
+    private name: string;
+    private text: string;
+    private inc: number;
     constructor(variableName: string, title: string, increaseValue = 0) {
         super('counter');
         this.name = variableName;

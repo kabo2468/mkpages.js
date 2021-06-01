@@ -1,9 +1,9 @@
 import { Component } from '../component';
 
 export class Post extends Component {
-    public text: string;
-    public attachCanvasImage: boolean;
-    public canvasId: string;
+    private text: string;
+    private attachCanvasImage: boolean;
+    private canvasId: string;
     constructor(text: string);
     constructor(text: string, canvasId: string);
     constructor(text: string, canvasId = '') {
