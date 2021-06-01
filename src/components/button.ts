@@ -13,7 +13,7 @@ export type ButtonSettings = {
     fn: string | null;
 };
 
-export class MPButton extends Component {
+export class Button extends Component {
     public text: string;
     public action: Actions;
     public primary: boolean;

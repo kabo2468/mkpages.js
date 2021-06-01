@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class MPSection extends Component {
+export class Section extends Component {
     public title: string;
     public children: Component[];
     constructor(title: string, children: Component[]) {

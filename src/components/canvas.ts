@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class MPCanvas extends Component {
+export class Canvas extends Component {
     public name: string;
     public width: number;
     public height: number;

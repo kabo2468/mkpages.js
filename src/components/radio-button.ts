@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class MPRadioButton extends Component {
+export class RadioButton extends Component {
     public name: string;
     public title: string;
     public values: string[];

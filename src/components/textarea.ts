@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class MPTextarea extends Component {
+export class Textarea extends Component {
     public text: string;
     constructor(text: string) {
         super('textarea');

@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class MPPost extends Component {
+export class Post extends Component {
     public text: string;
     public attachCanvasImage: boolean;
     public canvasId: string;

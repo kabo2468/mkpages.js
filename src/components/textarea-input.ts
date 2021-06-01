@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class MPTextareaInput extends Component {
+export class TextareaInput extends Component {
     public name: string;
     public text: string;
     public default: string;
