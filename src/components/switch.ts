@@ -4,7 +4,7 @@ export class Switch extends Component {
     private name: string;
     private text: string;
     private default: boolean;
-    constructor(variableName: string, title: string, defaultValue = false) {
+    constructor(variableName = '', title = '', defaultValue = false) {
         super('switch');
         this.name = variableName;
         this.text = title;

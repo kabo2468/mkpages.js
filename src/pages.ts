@@ -1,4 +1,6 @@
 import { Component } from './component';
+import { Actions } from './components/button';
+import { toComponent } from './util';
 
 type Fonts = 'serif' | 'sans-serif';
 
@@ -14,10 +16,45 @@ type BodyBase = {
     hideTitleWhenPinned: boolean;
 };
 
-type JsonComponents = {
-    [key: string]: string | number | boolean | null;
+type ComponentTypes =
+    | 'button'
+    | 'canvas'
+    | 'counter'
+    | 'if'
+    | 'image'
+    | 'numberInput'
+    | 'post'
+    | 'radioButton'
+    | 'section'
+    | 'switch'
+    | 'textInput'
+    | 'text'
+    | 'textareaInput'
+    | 'textarea';
+
+export type JsonComponents = {
+    [key: string]: string | string[] | number | boolean | null | JsonComponents[];
     id: string;
-    type: string;
+    type: ComponentTypes;
+    title: string;
+    children: JsonComponents[];
+    text: string;
+    fileId: string;
+    name: string;
+    width: number;
+    height: number;
+    fn: null | string;
+    var: null | string;
+    event: null | string;
+    action: Actions;
+    content: null | string;
+    message: null | string;
+    primary: boolean;
+    values: string[];
+    default: boolean | number | string;
+    inc: number;
+    canvasId: string;
+    attachCanvasImage: boolean;
 };
 
 interface JsonBody {
@@ -72,7 +109,7 @@ export default class Pages {
             this._urlName = json.name;
             this._title = json.title || '';
             this._summary = json.summary;
-            this._content = json.content || [];
+            this._content = json.content.map((ct) => toComponent(ct)) || [];
             // TODO: 変数
             this._variables = [];
             this._script = json.script;

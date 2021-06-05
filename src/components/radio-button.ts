@@ -5,7 +5,7 @@ export class RadioButton extends Component {
     private title: string;
     private values: string[];
     private default: string;
-    constructor(variableName: string, title: string, values: string[], defaultValue: string) {
+    constructor(variableName = '', title = '', values: string[] = [], defaultValue = '') {
         super('radioButton');
         this.name = variableName;
         this.title = title;

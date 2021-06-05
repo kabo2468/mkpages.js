@@ -1,17 +1,23 @@
 import { Component } from '../component';
 
-type Actions = 'dialog' | 'resetRandom' | 'pushEvent' | 'callAiScript';
+export type Actions = 'dialog' | 'resetRandom' | 'pushEvent' | 'callAiScript';
 
-type ButtonSettings = {
+interface ButtonOptions {
     title: string;
     primary: boolean;
-    action: Actions;
-    content: string | null;
-    event: string | null;
-    message: string | null;
-    variable: string | null;
-    fn: string | null;
-};
+}
+interface DialogOptions extends ButtonOptions {
+    content: string;
+}
+interface ResetRandomOptions extends ButtonOptions {}
+interface PushEventOptions extends ButtonOptions {
+    event: string;
+    message: string;
+    variable: string;
+}
+interface CallAiScriptOptions extends ButtonOptions {
+    functionName: string;
+}
 
 export class Button extends Component {
     private text: string;
@@ -23,43 +29,31 @@ export class Button extends Component {
     private var: string | null = null;
     private fn: string | null = null;
 
+    constructor(action?: 'dialog', options?: Partial<DialogOptions>);
+    constructor(action?: 'resetRandom', options?: Partial<ResetRandomOptions>);
+    constructor(action?: 'pushEvent', options?: Partial<PushEventOptions>);
+    constructor(action?: 'callAiScript', options?: Partial<CallAiScriptOptions>);
     constructor(
-        action: 'dialog',
-        { title, primary, content }: Partial<Pick<ButtonSettings, 'title' | 'primary' | 'content'>>
-    );
-    constructor(action: 'resetRandom', { title, primary }: Partial<Pick<ButtonSettings, 'title' | 'primary'>>);
-    constructor(
-        action: 'pushEvent',
-        {
-            title,
-            primary,
-            event,
-            message,
-            variable,
-        }: Partial<Pick<ButtonSettings, 'title' | 'primary' | 'event' | 'message' | 'variable'>>
-    );
-    constructor(
-        action: 'callAiScript',
-        { title, primary, fn }: Partial<Pick<ButtonSettings, 'title' | 'primary' | 'fn'>>
-    );
-    constructor(action: Actions, { title, primary, content, event, message, variable, fn }: Partial<ButtonSettings>) {
+        action: Actions = 'dialog',
+        options?: Partial<DialogOptions & ResetRandomOptions & PushEventOptions & CallAiScriptOptions>
+    ) {
         super('button');
-        this.text = title || '';
-        this.primary = primary || false;
+        this.text = options?.title || '';
+        this.primary = options?.primary || false;
         this.action = action;
         switch (action) {
             case 'dialog':
-                this.content = content || '';
+                this.content = options?.content || '';
                 break;
             case 'pushEvent':
-                this.event = event || '';
-                this.message = message || '';
-                this.var = variable || '';
+                this.event = options?.event || '';
+                this.message = options?.message || '';
+                this.var = options?.variable || '';
                 break;
             case 'resetRandom':
                 break;
             case 'callAiScript':
-                this.fn = fn || '';
+                this.fn = options?.functionName || '';
                 break;
         }
     }
