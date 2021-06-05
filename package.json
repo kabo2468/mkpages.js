@@ -2,14 +2,14 @@
   "name": "mkpages.js",
   "version": "0.9.0",
   "description": "Misskey Pages Builder for JavaScript",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
-    "clean": "rimraf dist/*",
+    "clean": "rimraf lib/*",
     "build": "npm run clean && tsc",
     "prepublishOnly": "npm run build"
   },
