@@ -223,4 +223,9 @@ export default class Pages {
         this._content.push(...component);
         return this;
     }
+
+    removeComponent(index: number): Pages {
+        this._content.splice(index, 1);
+        return this;
+    }
 }
