@@ -19,7 +19,7 @@ interface CallAiScriptOptions extends ButtonOptions {
     functionName: string;
 }
 
-export class Button extends Component {
+export class MPButton extends Component {
     private text: string;
     private action: Actions;
     private primary: boolean;

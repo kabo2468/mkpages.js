@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class NumberInput extends Component {
+export class MPNumberInput extends Component {
     private name: string;
     private text: string;
     private default: number;

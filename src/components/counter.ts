@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class Counter extends Component {
+export class MPCounter extends Component {
     private name: string;
     private text: string;
     private inc: number;

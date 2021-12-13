@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class If extends Component {
+export class MPIf extends Component {
     private var: string;
     private children: Component[];
     constructor(variableName = '', children: Component[] = []) {

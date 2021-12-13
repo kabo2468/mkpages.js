@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class Switch extends Component {
+export class MPSwitch extends Component {
     private name: string;
     private text: string;
     private default: boolean;

@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-export class Text extends Component {
+export class MPText extends Component {
     private text: string;
     constructor(text = '') {
         super('text');
