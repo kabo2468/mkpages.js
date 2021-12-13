@@ -78,7 +78,7 @@ interface Settings extends Partial<BodyBase> {
     urlName?: string;
 }
 
-export default class Pages {
+export class MkPages {
     private _urlName: string;
     private _title: string;
     private _summary: string | null;
@@ -178,53 +178,53 @@ export default class Pages {
         return this._hideTitleWhenPinned;
     }
 
-    setUrlName(value: string): Pages {
+    setUrlName(value: string): MkPages {
         this._urlName = value;
         return this;
     }
-    setTitle(value: string): Pages {
+    setTitle(value: string): MkPages {
         this._title = value;
         return this;
     }
-    setSummary(value: string): Pages {
+    setSummary(value: string): MkPages {
         this._summary = value;
         return this;
     }
-    setContent(value: Component[]): Pages {
+    setContent(value: Component[]): MkPages {
         this._content = value;
         return this;
     }
-    setVariables(value: any[]): Pages {
+    setVariables(value: any[]): MkPages {
         this._variables = value;
         return this;
     }
-    setScript(value: string): Pages {
+    setScript(value: string): MkPages {
         this._script = value;
         return this;
     }
-    setEyeCatchingImageId(value: string): Pages {
+    setEyeCatchingImageId(value: string): MkPages {
         this._eyeCatchingImageId = value;
         return this;
     }
-    setFont(value: Fonts): Pages {
+    setFont(value: Fonts): MkPages {
         this._font = value;
         return this;
     }
-    setAlignCenter(value: boolean): Pages {
+    setAlignCenter(value: boolean): MkPages {
         this._alignCenter = value;
         return this;
     }
-    setHideTitleWhenPinned(value: boolean): Pages {
+    setHideTitleWhenPinned(value: boolean): MkPages {
         this._hideTitleWhenPinned = value;
         return this;
     }
 
-    addComponents(...component: Component[]): Pages {
+    addComponents(...component: Component[]): MkPages {
         this._content.push(...component);
         return this;
     }
 
-    removeComponent(index: number): Pages {
+    removeComponent(index: number): MkPages {
         this._content.splice(index, 1);
         return this;
     }

@@ -1,6 +1,3 @@
-import Pages from './pages';
-
-export default Pages;
 export { MPButton } from './components/button';
 export { MPCanvas } from './components/canvas';
 export { MPCounter } from './components/counter';
@@ -16,3 +13,4 @@ export { MPTextInput } from './components/text-input';
 export { MPTextarea } from './components/textarea';
 export { MPTextareaInput } from './components/textarea-input';
 export { MPEnvVars } from './env-vars';
+export { MkPages } from './pages';
