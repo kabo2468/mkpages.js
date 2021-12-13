@@ -15,3 +15,4 @@ export { MPText } from './components/text';
 export { MPTextInput } from './components/text-input';
 export { MPTextarea } from './components/textarea';
 export { MPTextareaInput } from './components/textarea-input';
+export { MPEnvVars } from './env-vars';
