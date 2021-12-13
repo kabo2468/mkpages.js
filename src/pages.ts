@@ -8,7 +8,7 @@ type BodyBase = {
     title: string | null;
     summary: string | null;
     content: Component[] | null;
-    variables: string[] | null;
+    variables: any[] | null;
     script: string;
     eyeCatchingImageId: string | null;
     font: Fonts;
@@ -83,7 +83,7 @@ export default class Pages {
     private _title: string;
     private _summary: string | null;
     private _content: Component[];
-    private _variables: string[];
+    private _variables: any[];
     private _script: string;
     private _eyeCatchingImageId: string | null;
     private _font: Fonts;
@@ -111,7 +111,7 @@ export default class Pages {
             this._summary = json.summary;
             this._content = json.content.map((ct) => toComponent(ct)) || [];
             // TODO: 変数
-            this._variables = [];
+            this._variables = json.variables;
             this._script = json.script;
             this._eyeCatchingImageId = json.eyeCatchingImageId;
             this._font = json.font;
@@ -123,7 +123,7 @@ export default class Pages {
             this._summary = context?.summary || null;
             this._content = context?.content || [];
             // TODO: 変数
-            this._variables = [];
+            this._variables = context?.variables || [];
             this._script = context?.script || '';
             this._eyeCatchingImageId = context?.eyeCatchingImageId || null;
             this._font = context?.font || 'sans-serif';
@@ -159,7 +159,7 @@ export default class Pages {
     get content(): Component[] {
         return this._content;
     }
-    get variables(): string[] {
+    get variables(): any[] {
         return this._variables;
     }
     get script(): string {
@@ -194,7 +194,7 @@ export default class Pages {
         this._content = value;
         return this;
     }
-    setVariables(value: string[]): Pages {
+    setVariables(value: any[]): Pages {
         this._variables = value;
         return this;
     }
