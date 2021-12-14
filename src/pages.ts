@@ -124,8 +124,8 @@ export class MkPages {
         }
     }
 
-    toObject(): Body {
-        return {
+    toJson(): string {
+        return JSON.stringify({
             name: this._urlName,
             title: this._title,
             summary: this._summary,
@@ -136,7 +136,7 @@ export class MkPages {
             eyeCatchingImageId: this._eyeCatchingImageId,
             alignCenter: this._alignCenter,
             hideTitleWhenPinned: this._hideTitleWhenPinned,
-        };
+        });
     }
 
     get urlName(): string {
