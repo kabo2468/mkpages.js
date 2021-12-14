@@ -1,14 +1,20 @@
 import { Component } from '../component';
 
+type CanvasOption = {
+    canvasId: string;
+    width: number;
+    height: number;
+};
+
 export class MPCanvas extends Component {
     private name: string;
     private width: number;
     private height: number;
 
-    constructor(canvasId = '', width = 300, height = 200) {
+    constructor(options: Partial<CanvasOption>) {
         super('canvas');
-        this.name = canvasId;
-        this.width = width;
-        this.height = height;
+        this.name = options.canvasId || '';
+        this.width = options.width || 300;
+        this.height = options.height || 200;
     }
 }

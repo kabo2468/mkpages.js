@@ -1,9 +1,13 @@
 import { Component } from '../component';
 
+type TextareaOption = {
+    text: string;
+};
+
 export class MPTextarea extends Component {
     private text: string;
-    constructor(text = '') {
+    constructor(options: Partial<TextareaOption>) {
         super('textarea');
-        this.text = text;
+        this.text = options.text || '';
     }
 }

@@ -1,12 +1,17 @@
 import { Component } from '../component';
 
+type SectionOptions = {
+    title: string;
+    children: Component[];
+};
+
 export class MPSection extends Component {
     private title: string;
     private children: Component[];
-    constructor(title = '', children: Component[] = []) {
+    constructor(options: Partial<SectionOptions>) {
         super('section');
-        this.title = title;
-        this.children = children;
+        this.title = options.title || '';
+        this.children = options.children || [];
     }
 
     addComponents(...components: Component[]): MPSection {

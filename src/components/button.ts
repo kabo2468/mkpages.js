@@ -3,19 +3,25 @@ import { Component } from '../component';
 export type Actions = 'dialog' | 'resetRandom' | 'pushEvent' | 'callAiScript';
 
 interface ButtonOptions {
+    action: Actions;
     title: string;
     primary: boolean;
 }
 interface DialogOptions extends ButtonOptions {
+    action: 'dialog';
     content: string;
 }
-interface ResetRandomOptions extends ButtonOptions {}
+interface ResetRandomOptions extends ButtonOptions {
+    action: 'resetRandom';
+}
 interface PushEventOptions extends ButtonOptions {
+    action: 'pushEvent';
     event: string;
     message: string;
     variable: string;
 }
 interface CallAiScriptOptions extends ButtonOptions {
+    action: 'callAiScript';
     functionName: string;
 }
 
@@ -29,19 +35,22 @@ export class MPButton extends Component {
     private var: string | null = null;
     private fn: string | null = null;
 
-    constructor(action?: 'dialog', options?: Partial<DialogOptions>);
-    constructor(action?: 'resetRandom', options?: Partial<ResetRandomOptions>);
-    constructor(action?: 'pushEvent', options?: Partial<PushEventOptions>);
-    constructor(action?: 'callAiScript', options?: Partial<CallAiScriptOptions>);
+    constructor(options: Partial<DialogOptions>);
+    constructor(options: Partial<ResetRandomOptions>);
+    constructor(options: Partial<PushEventOptions>);
+    constructor(options: Partial<CallAiScriptOptions>);
     constructor(
-        action: Actions = 'dialog',
-        options?: Partial<DialogOptions & ResetRandomOptions & PushEventOptions & CallAiScriptOptions>
+        options:
+            | Partial<DialogOptions>
+            | Partial<ResetRandomOptions>
+            | Partial<PushEventOptions>
+            | Partial<CallAiScriptOptions>
     ) {
         super('button');
         this.text = options?.title || '';
         this.primary = options?.primary || false;
-        this.action = action;
-        switch (action) {
+        this.action = options.action || 'dialog';
+        switch (options.action) {
             case 'dialog':
                 this.content = options?.content || '';
                 break;

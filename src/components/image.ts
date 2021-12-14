@@ -1,9 +1,13 @@
 import { Component } from '../component';
 
+type ImageOption = {
+    fileId: string;
+};
+
 export class MPImage extends Component {
     private fileId: string;
-    constructor(fileId = '') {
+    constructor(options: Partial<ImageOption>) {
         super('image');
-        this.fileId = fileId;
+        this.fileId = options.fileId || '';
     }
 }

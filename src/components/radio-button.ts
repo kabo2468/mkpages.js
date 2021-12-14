@@ -1,15 +1,22 @@
 import { Component } from '../component';
 
+type RadioButtonOption = {
+    variableName: string;
+    title: string;
+    values: string[];
+    defaultValue: string;
+};
+
 export class MPRadioButton extends Component {
     private name: string;
     private title: string;
     private values: string[];
     private default: string;
-    constructor(variableName = '', title = '', values: string[] = [], defaultValue = '') {
+    constructor(options: Partial<RadioButtonOption>) {
         super('radioButton');
-        this.name = variableName;
-        this.title = title;
-        this.values = values;
-        this.default = defaultValue;
+        this.name = options.variableName || '';
+        this.title = options.title || '';
+        this.values = options.values || [];
+        this.default = options.defaultValue || '';
     }
 }
