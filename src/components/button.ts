@@ -2,28 +2,28 @@ import { Component } from '../component';
 
 export type Actions = 'dialog' | 'resetRandom' | 'pushEvent' | 'callAiScript';
 
-interface ButtonOptions {
+type ButtonOptions = {
     action: Actions;
     title: string;
     primary: boolean;
-}
-interface DialogOptions extends ButtonOptions {
+};
+export type DialogOptions = ButtonOptions & {
     action: 'dialog';
     content: string;
-}
-interface ResetRandomOptions extends ButtonOptions {
+};
+export type ResetRandomOptions = ButtonOptions & {
     action: 'resetRandom';
-}
-interface PushEventOptions extends ButtonOptions {
+};
+export type PushEventOptions = ButtonOptions & {
     action: 'pushEvent';
     event: string;
     message: string;
     variable: string;
-}
-interface CallAiScriptOptions extends ButtonOptions {
+};
+export type CallAiScriptOptions = ButtonOptions & {
     action: 'callAiScript';
     functionName: string;
-}
+};
 
 export class MPButton extends Component {
     private text: string;

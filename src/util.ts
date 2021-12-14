@@ -13,47 +13,56 @@ import { MPText } from './components/text';
 import { MPTextInput } from './components/text-input';
 import { MPTextarea } from './components/textarea';
 import { MPTextareaInput } from './components/textarea-input';
-import { JsonComponents } from './pages';
+import { ComponentTypes } from './pages.js';
 
-export function toComponent(obj: JsonComponents): Component {
+export function toComponent(obj: ComponentTypes): Component {
     switch (obj.type) {
         case 'button':
-            return Object.assign(new MPButton(), obj);
+            switch (obj.action) {
+                case 'dialog':
+                    return new MPButton(obj);
+                case 'pushEvent':
+                    return new MPButton(obj);
+                case 'resetRandom':
+                    return new MPButton(obj);
+                case 'callAiScript':
+                    return new MPButton(obj);
+            }
         case 'canvas':
-            return Object.assign(new MPCanvas(), obj);
+            return new MPCanvas(obj);
         case 'counter':
-            return Object.assign(new MPCounter(), obj);
+            return new MPCounter(obj);
         case 'if':
             const ifData = {
                 id: obj.id,
-                var: obj.var || '',
+                var: obj.variableName || '',
                 children: obj.children.map((child) => toComponent(child)),
             };
-            return Object.assign(new MPIf(), ifData);
+            return new MPIf(ifData);
         case 'image':
-            return Object.assign(new MPImage(), obj);
+            return new MPImage(obj);
         case 'numberInput':
-            return Object.assign(new MPNumberInput(), obj);
+            return new MPNumberInput(obj);
         case 'post':
-            return Object.assign(new MPPost(), obj);
+            return new MPPost(obj);
         case 'radioButton':
-            return Object.assign(new MPRadioButton(), obj);
+            return new MPRadioButton(obj);
         case 'section':
             const sectionData = {
                 id: obj.id,
                 title: obj.title,
                 children: obj.children.map((child) => toComponent(child)),
             };
-            return Object.assign(new MPSection(), sectionData);
+            return new MPSection(sectionData);
         case 'switch':
-            return Object.assign(new MPSwitch(), obj);
+            return new MPSwitch(obj);
         case 'textInput':
-            return Object.assign(new MPTextInput(), obj);
+            return new MPTextInput(obj);
         case 'text':
-            return Object.assign(new MPText(), obj);
+            return new MPText(obj);
         case 'textareaInput':
-            return Object.assign(new MPTextareaInput(), obj);
+            return new MPTextareaInput(obj);
         case 'textarea':
-            return Object.assign(new MPTextarea(), obj);
+            return new MPTextarea(obj);
     }
 }

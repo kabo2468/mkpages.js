@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-type SwitchOption = {
+export type SwitchOptions = {
     variableName: string;
     title: string;
     defaultValue: boolean;
@@ -10,7 +10,7 @@ export class MPSwitch extends Component {
     private name: string;
     private text: string;
     private default: boolean;
-    constructor(options: Partial<SwitchOption>) {
+    constructor(options: Partial<SwitchOptions>) {
         super('switch');
         this.name = options.variableName || '';
         this.text = options.title || '';

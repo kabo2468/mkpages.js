@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-type TextInputOption = {
+export type TextInputOptions = {
     variableName: string;
     title: string;
     defaultValue: string;
@@ -10,7 +10,7 @@ export class MPTextInput extends Component {
     private name: string;
     private text: string;
     private default: string;
-    constructor(options: Partial<TextInputOption>) {
+    constructor(options: Partial<TextInputOptions>) {
         super('textInput');
         this.name = options.variableName || '';
         this.text = options.title || '';

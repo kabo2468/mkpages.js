@@ -1,12 +1,12 @@
 import { Component } from '../component';
 
-type ImageOption = {
+export type ImageOptions = {
     fileId: string;
 };
 
 export class MPImage extends Component {
     private fileId: string;
-    constructor(options: Partial<ImageOption>) {
+    constructor(options: Partial<ImageOptions>) {
         super('image');
         this.fileId = options.fileId || '';
     }

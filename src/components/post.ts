@@ -1,18 +1,18 @@
 import { Component } from '../component';
 
-type PostOption = {
+export type PostOptions = {
     text: string;
 };
-type PostOptionWithCanvas = PostOption & { canvasId: string };
+export type PostWithCanvasOptions = PostOptions & { canvasId: string };
 
 export class MPPost extends Component {
     private text: string;
     private attachCanvasImage: boolean;
     private canvasId: string;
 
-    constructor(options: Partial<PostOption>);
-    constructor(options: Partial<PostOptionWithCanvas>);
-    constructor(options: Partial<PostOption> | Partial<PostOptionWithCanvas>) {
+    constructor(options: Partial<PostOptions>);
+    constructor(options: Partial<PostWithCanvasOptions>);
+    constructor(options: Partial<PostOptions> | Partial<PostWithCanvasOptions>) {
         super('post');
         this.text = options.text || '';
         this.canvasId = '';

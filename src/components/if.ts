@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-type IfOption = {
+export type IfOptions = {
     variableName: string;
     children: Component[];
 };
@@ -8,7 +8,7 @@ type IfOption = {
 export class MPIf extends Component {
     private var: string;
     private children: Component[];
-    constructor(options: Partial<IfOption>) {
+    constructor(options: Partial<IfOptions>) {
         super('if');
         this.var = options.variableName || '';
         this.children = options.children || [];

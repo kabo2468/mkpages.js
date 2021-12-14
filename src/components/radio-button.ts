@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-type RadioButtonOption = {
+export type RadioButtonOptions = {
     variableName: string;
     title: string;
     values: string[];
@@ -12,7 +12,7 @@ export class MPRadioButton extends Component {
     private title: string;
     private values: string[];
     private default: string;
-    constructor(options: Partial<RadioButtonOption>) {
+    constructor(options: Partial<RadioButtonOptions>) {
         super('radioButton');
         this.name = options.variableName || '';
         this.title = options.title || '';

@@ -1,5 +1,18 @@
 import { Component } from './component';
-import { Actions } from './components/button';
+import { CallAiScriptOptions, DialogOptions, PushEventOptions, ResetRandomOptions } from './components/button';
+import { CanvasOptions } from './components/canvas.js';
+import { CounterOptions } from './components/counter.js';
+import { IfOptions } from './components/if.js';
+import { ImageOptions } from './components/image.js';
+import { NumberInputOptions } from './components/number-input.js';
+import { PostWithCanvasOptions } from './components/post.js';
+import { RadioButtonOptions } from './components/radio-button.js';
+import { SectionOptions } from './components/section.js';
+import { SwitchOptions } from './components/switch.js';
+import { TextInputOptions } from './components/text-input.js';
+import { TextOptions } from './components/text.js';
+import { TextareaInputOptions } from './components/textarea-input.js';
+import { TextareaOptions } from './components/textarea.js';
 import { toComponent } from './util';
 
 type Fonts = 'serif' | 'sans-serif';
@@ -16,46 +29,25 @@ type BodyBase = {
     hideTitleWhenPinned: boolean;
 };
 
-type ComponentTypes =
-    | 'button'
-    | 'canvas'
-    | 'counter'
-    | 'if'
-    | 'image'
-    | 'numberInput'
-    | 'post'
-    | 'radioButton'
-    | 'section'
-    | 'switch'
-    | 'textInput'
-    | 'text'
-    | 'textareaInput'
-    | 'textarea';
-
-export type JsonComponents = {
-    [key: string]: string | string[] | number | boolean | null | JsonComponents[];
-    id: string;
-    type: ComponentTypes;
-    title: string;
-    children: JsonComponents[];
-    text: string;
-    fileId: string;
-    name: string;
-    width: number;
-    height: number;
-    fn: null | string;
-    var: null | string;
-    event: null | string;
-    action: Actions;
-    content: null | string;
-    message: null | string;
-    primary: boolean;
-    values: string[];
-    default: boolean | number | string;
-    inc: number;
-    canvasId: string;
-    attachCanvasImage: boolean;
-};
+export type ComponentTypes = (
+    | (DialogOptions & { type: 'button' })
+    | (ResetRandomOptions & { type: 'button' })
+    | (PushEventOptions & { type: 'button' })
+    | (CallAiScriptOptions & { type: 'button' })
+    | (CanvasOptions & { type: 'canvas' })
+    | (CounterOptions & { type: 'counter' })
+    | (Omit<IfOptions, 'children'> & { type: 'if'; children: ComponentTypes[] })
+    | (ImageOptions & { type: 'image' })
+    | (NumberInputOptions & { type: 'numberInput' })
+    | (PostWithCanvasOptions & { type: 'post' })
+    | (RadioButtonOptions & { type: 'radioButton' })
+    | (Omit<SectionOptions, 'children'> & { type: 'section'; children: ComponentTypes[] })
+    | (SwitchOptions & { type: 'switch' })
+    | (TextOptions & { type: 'text' })
+    | (TextInputOptions & { type: 'textInput' })
+    | (TextareaOptions & { type: 'textarea' })
+    | (TextareaInputOptions & { type: 'textareaInput' })
+) & { type: string; id: string };
 
 interface JsonBody {
     title: string;
@@ -65,8 +57,8 @@ interface JsonBody {
     script: string;
     hideTitleWhenPinned: boolean;
     alignCenter: boolean;
-    content: JsonComponents[];
-    variables: JsonComponents[];
+    content: ComponentTypes[];
+    variables: ComponentTypes[];
     eyeCatchingImageId: string | null;
 }
 

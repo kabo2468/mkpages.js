@@ -1,6 +1,6 @@
 import { Component } from '../component';
 
-type SectionOptions = {
+export type SectionOptions = {
     title: string;
     children: Component[];
 };
