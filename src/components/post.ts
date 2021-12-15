@@ -19,7 +19,7 @@ export class MPPost extends Component {
         this.attachCanvasImage = false;
         if ('canvasId' in options) {
             this.canvasId = options.canvasId || '';
-            this.attachCanvasImage = true;
+            this.attachCanvasImage = options.canvasId ? true : false;
         }
     }
 }
