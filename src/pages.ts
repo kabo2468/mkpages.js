@@ -105,7 +105,7 @@ export class MkPages {
     get eyeCatchingImageId(): string | null {
         return this._eyeCatchingImageId;
     }
-    get font(): string {
+    get font(): Fonts {
         return this._font;
     }
     get alignCenter(): boolean {
