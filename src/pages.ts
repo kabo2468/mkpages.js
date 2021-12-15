@@ -69,8 +69,8 @@ export class MkPages {
         }
     }
 
-    toJSON(): string {
-        return JSON.stringify({
+    toObject() {
+        return {
             name: this._urlName,
             title: this._title,
             summary: this._summary,
@@ -81,7 +81,7 @@ export class MkPages {
             eyeCatchingImageId: this._eyeCatchingImageId,
             alignCenter: this._alignCenter,
             hideTitleWhenPinned: this._hideTitleWhenPinned,
-        });
+        };
     }
 
     get urlName(): string {
