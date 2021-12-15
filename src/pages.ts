@@ -69,7 +69,7 @@ export class MkPages {
         }
     }
 
-    toJson(): string {
+    toJSON(): string {
         return JSON.stringify({
             name: this._urlName,
             title: this._title,
