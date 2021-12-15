@@ -1,9 +1,9 @@
 import { Component } from '../component';
 
 export type NumberInputOptions = {
-    variableName?: string;
-    title?: string;
-    defaultValue?: number;
+    variableName: string;
+    title: string;
+    defaultValue: number;
 };
 
 export class MPNumberInput extends Component {
