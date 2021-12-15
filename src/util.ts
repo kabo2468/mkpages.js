@@ -1,4 +1,4 @@
-import { Component } from './component';
+import { Component, ComponentTypes } from './component';
 import { MPButton } from './components/button';
 import { MPCanvas } from './components/canvas';
 import { MPCounter } from './components/counter';
@@ -13,7 +13,6 @@ import { MPText } from './components/text';
 import { MPTextInput } from './components/text-input';
 import { MPTextarea } from './components/textarea';
 import { MPTextareaInput } from './components/textarea-input';
-import { ComponentTypes } from './pages.js';
 
 export function toComponent(obj: ComponentTypes): Component {
     switch (obj.type) {

@@ -1,53 +1,7 @@
-import { Component } from './component';
-import { CallAiScriptOptions, DialogOptions, PushEventOptions, ResetRandomOptions } from './components/button';
-import { CanvasOptions } from './components/canvas.js';
-import { CounterOptions } from './components/counter.js';
-import { IfOptions } from './components/if.js';
-import { ImageOptions } from './components/image.js';
-import { NumberInputOptions } from './components/number-input.js';
-import { PostWithCanvasOptions } from './components/post.js';
-import { RadioButtonOptions } from './components/radio-button.js';
-import { SectionOptions } from './components/section.js';
-import { SwitchOptions } from './components/switch.js';
-import { TextInputOptions } from './components/text-input.js';
-import { TextOptions } from './components/text.js';
-import { TextareaInputOptions } from './components/textarea-input.js';
-import { TextareaOptions } from './components/textarea.js';
+import { Component, ComponentTypes } from './component';
 import { toComponent } from './util';
 
 type Fonts = 'serif' | 'sans-serif';
-
-type BodyBase = {
-    title: string | null;
-    summary: string | null;
-    content: Component[] | null;
-    variables: any[] | null;
-    script: string;
-    eyeCatchingImageId: string | null;
-    font: Fonts;
-    alignCenter: boolean;
-    hideTitleWhenPinned: boolean;
-};
-
-export type ComponentTypes = (
-    | (DialogOptions & { type: 'button' })
-    | (ResetRandomOptions & { type: 'button' })
-    | (PushEventOptions & { type: 'button' })
-    | (CallAiScriptOptions & { type: 'button' })
-    | (CanvasOptions & { type: 'canvas' })
-    | (CounterOptions & { type: 'counter' })
-    | (Omit<IfOptions, 'children'> & { type: 'if'; children: ComponentTypes[] })
-    | (ImageOptions & { type: 'image' })
-    | (NumberInputOptions & { type: 'numberInput' })
-    | (PostWithCanvasOptions & { type: 'post' })
-    | (RadioButtonOptions & { type: 'radioButton' })
-    | (Omit<SectionOptions, 'children'> & { type: 'section'; children: ComponentTypes[] })
-    | (SwitchOptions & { type: 'switch' })
-    | (TextOptions & { type: 'text' })
-    | (TextInputOptions & { type: 'textInput' })
-    | (TextareaOptions & { type: 'textarea' })
-    | (TextareaInputOptions & { type: 'textareaInput' })
-) & { type: string; id: string };
 
 interface JsonBody {
     title: string;
@@ -58,16 +12,8 @@ interface JsonBody {
     hideTitleWhenPinned: boolean;
     alignCenter: boolean;
     content: ComponentTypes[];
-    variables: ComponentTypes[];
+    variables: any[];
     eyeCatchingImageId: string | null;
-}
-
-interface Body extends BodyBase {
-    name: string;
-}
-
-interface Settings extends Partial<BodyBase> {
-    urlName?: string;
 }
 
 export class MkPages {
@@ -83,20 +29,19 @@ export class MkPages {
     private _hideTitleWhenPinned: boolean;
 
     /**
-     * Creates an instance of Pages from object.
-     * @param {Settings} [detail]
+     * Creates an instance of Pages.
      * @memberof Pages
      */
-    constructor(object?: Settings);
+    constructor();
     /**
      * Creates an instance of Pages from JSON.
      * @param {string} [json]
      * @memberof Pages
      */
     constructor(json: string);
-    constructor(context?: Settings | string) {
-        if (typeof context === 'string') {
-            const json = JSON.parse(context) as JsonBody;
+    constructor(text?: string) {
+        if (text) {
+            const json = JSON.parse(text) as JsonBody;
 
             this._urlName = json.name;
             this._title = json.title || '';
@@ -110,17 +55,17 @@ export class MkPages {
             this._alignCenter = json.alignCenter;
             this._hideTitleWhenPinned = json.hideTitleWhenPinned;
         } else {
-            this._urlName = context?.urlName || Date.now().toString();
-            this._title = context?.title || '';
-            this._summary = context?.summary || null;
-            this._content = context?.content || [];
+            this._urlName = Date.now().toString();
+            this._title = '';
+            this._summary = null;
+            this._content = [];
             // TODO: 変数
-            this._variables = context?.variables || [];
-            this._script = context?.script || '';
-            this._eyeCatchingImageId = context?.eyeCatchingImageId || null;
-            this._font = context?.font || 'sans-serif';
-            this._alignCenter = context?.alignCenter || false;
-            this._hideTitleWhenPinned = context?.hideTitleWhenPinned || false;
+            this._variables = [];
+            this._script = '';
+            this._eyeCatchingImageId = null;
+            this._font = 'sans-serif';
+            this._alignCenter = false;
+            this._hideTitleWhenPinned = false;
         }
     }
 
