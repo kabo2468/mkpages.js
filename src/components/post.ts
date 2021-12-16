@@ -3,7 +3,10 @@ import { Component } from '../component';
 export type PostOptions = {
     text: string;
 };
-export type PostWithCanvasOptions = PostOptions & { canvasId: string };
+export type PostWithCanvasOptions = {
+    text: string;
+    canvasId: string;
+};
 
 export class MPPost extends Component {
     private text: string;
