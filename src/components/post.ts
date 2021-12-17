@@ -3,8 +3,7 @@ import { Component } from '../component';
 export type PostOptions = {
     text: string;
 };
-export type PostWithCanvasOptions = {
-    text: string;
+export type PostWithCanvasOptions = Partial<PostOptions> & {
     canvasId: string;
 };
 
@@ -14,15 +13,16 @@ export class MPPost extends Component {
     private canvasId: string;
 
     constructor(options: Partial<PostOptions>);
-    constructor(options: Partial<PostWithCanvasOptions>);
-    constructor(options: Partial<PostOptions> | Partial<PostWithCanvasOptions>) {
+    constructor(options: PostWithCanvasOptions);
+    constructor(options: Partial<PostOptions> | PostWithCanvasOptions) {
         super('post');
         this.text = options.text || '';
-        this.canvasId = '';
-        this.attachCanvasImage = false;
         if ('canvasId' in options) {
-            this.canvasId = options.canvasId || '';
-            this.attachCanvasImage = options.canvasId ? true : false;
+            this.canvasId = options.canvasId;
+            this.attachCanvasImage = true;
+        } else {
+            this.canvasId = '';
+            this.attachCanvasImage = false;
         }
     }
 }
