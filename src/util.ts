@@ -4,6 +4,7 @@ import { MPCanvas } from './components/canvas';
 import { MPCounter } from './components/counter';
 import { MPIf } from './components/if';
 import { MPImage } from './components/image';
+import { MPNote } from './components/note';
 import { MPNumberInput } from './components/number-input';
 import { MPPost } from './components/post';
 import { MPRadioButton } from './components/radio-button';
@@ -40,6 +41,8 @@ export function toComponent(obj: ComponentTypes): Component {
             return new MPIf(ifData);
         case 'image':
             return new MPImage(obj);
+        case 'note':
+            return new MPNote(obj);
         case 'numberInput':
             return new MPNumberInput(obj);
         case 'post':

@@ -147,6 +147,15 @@ new MPImage({
 });
 ```
 
+#### MPNote
+
+```typescript
+new MPNote({
+  note: string,
+  detailed: boolean,
+});
+```
+
 #### MPNumberInput
 
 ```typescript

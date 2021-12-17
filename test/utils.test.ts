@@ -4,6 +4,7 @@ import {
     MPCounter,
     MPIf,
     MPImage,
+    MPNote,
     MPNumberInput,
     MPPost,
     MPRadioButton,
@@ -101,6 +102,15 @@ describe('Utils', () => {
                 fileId: 'fileId',
             });
             expect(component).toBeInstanceOf(MPImage);
+        });
+        test('Note', () => {
+            const component = toComponent({
+                type: 'note',
+                id,
+                note: 'noteId',
+                detailed: true,
+            });
+            expect(component).toBeInstanceOf(MPNote);
         });
         test('NumberInput', () => {
             const component = toComponent({

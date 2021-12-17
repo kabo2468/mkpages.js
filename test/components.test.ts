@@ -4,6 +4,7 @@ import {
     MPCounter,
     MPIf,
     MPImage,
+    MPNote,
     MPNumberInput,
     MPPost,
     MPRadioButton,
@@ -265,6 +266,27 @@ describe('Components', () => {
             type: 'image',
             id: expect.any(String),
             fileId: '',
+        });
+    });
+    test('Note', () => {
+        const component = new MPNote({
+            detailed: true,
+            note: 'noteId',
+        });
+        expect(component).toMatchObject({
+            type: 'note',
+            id: expect.any(String),
+            note: 'noteId',
+            detailed: true,
+        });
+    });
+    test('Note no options', () => {
+        const component = new MPNote({});
+        expect(component).toMatchObject({
+            type: 'note',
+            id: expect.any(String),
+            note: '',
+            detailed: false,
         });
     });
     test('NumberInput', () => {
