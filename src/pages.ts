@@ -44,9 +44,9 @@ export class MkPages {
             const json = JSON.parse(text) as JsonBody;
 
             this._urlName = json.name;
-            this._title = json.title || '';
+            this._title = json.title;
             this._summary = json.summary;
-            this._content = json.content.map((ct) => toComponent(ct)) || [];
+            this._content = json.content.map((ct) => toComponent(ct));
             // TODO: 変数
             this._variables = json.variables;
             this._script = json.script;
@@ -123,7 +123,7 @@ export class MkPages {
         this._title = value;
         return this;
     }
-    setSummary(value: string): MkPages {
+    setSummary(value: string | null): MkPages {
         this._summary = value;
         return this;
     }
@@ -139,7 +139,7 @@ export class MkPages {
         this._script = value;
         return this;
     }
-    setEyeCatchingImageId(value: string): MkPages {
+    setEyeCatchingImageId(value: string | null): MkPages {
         this._eyeCatchingImageId = value;
         return this;
     }

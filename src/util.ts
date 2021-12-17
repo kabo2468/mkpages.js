@@ -34,7 +34,7 @@ export function toComponent(obj: ComponentTypes): Component {
         case 'if':
             const ifData = {
                 id: obj.id,
-                var: obj.variableName || '',
+                var: obj.variableName,
                 children: obj.children.map((child) => toComponent(child)),
             };
             return new MPIf(ifData);
