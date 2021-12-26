@@ -2,7 +2,7 @@
 
 A library for building Misskey Pages.
 
-**Variables is NOT implemented because Pages function will be updated.**
+**Variables is NOT implemented because [Pages function will be updated](https://github.com/misskey-dev/misskey/issues/8034).**
 
 ## Installation
 
@@ -11,6 +11,8 @@ npm install mkpages.js
 ```
 
 ## Example
+
+<https://misskey.io/@kabo/pages/1640542143655>
 
 ```javascript
 const { MkPages, MPText, MPButton, MPPost } = require('mkpages.js');
