@@ -24,19 +24,23 @@ const page = new MkPages()
     new MPPost({ text: 'Post Form' })
   );
 
-// Page to JSON.
-const json = page.toJSON();
+// Page to Object.
+const obj = page.toObject();
 
 // Build the page from JSON.
-const pageFromJSON = new MkPages(json);
+const pageFromJSON = new MkPages(JSON.stringify(obj));
 pageFromJSON.addComponents(new MPText({ text: 'Added Text' }));
 
-const changedJson = pageFromJSON.toJSON();
+const changedObj = pageFromJSON.toObject();
 
 // Post the page to Misskey.
+const body = {
+  ...changedObj,
+  i: 'APIKEY',
+};
 fetch('https://misskey.io/api/pages/create', {
   method: 'post',
-  body: changedJson,
+  body: JSON.stringify(body),
   headers: { 'Content-Type': 'application/json' },
 });
 ```
