@@ -3,3 +3,4 @@ lib
 .vscode
 coverage
 ex
+*.tgz
