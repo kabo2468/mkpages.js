@@ -12,18 +12,19 @@ npm install mkpages.js
 
 ## Example
 
-<https://misskey.io/@kabo/pages/1640542143655>
+<https://misskey.io/@kabo/pages/1640543620758>
 
 ```javascript
-const { MkPages, MPText, MPButton, MPPost } = require('mkpages.js');
+const { MkPages, MPButton, MPPost, MPText, MPEnvVars } = require('mkpages.js');
 
 // Build the page.
 const page = new MkPages()
   .setTitle('Page name')
+  .setAlignCenter(true)
   .addComponents(
     new MPText({ text: 'Text' }),
     new MPButton({ action: 'dialog', title: 'Button', content: 'Dialog Content' }),
-    new MPPost({ text: 'Post Form' })
+    new MPPost({ text: `Post Form\nExamples: https://github.com/kabo2468/mkpages.js\n\n${MPEnvVars.url}` })
   );
 
 // Page to Object.
@@ -256,20 +257,20 @@ new MPTextareaInput({
 
 ```javascript
 const MPEnvVars = {
-  ai: 'AI',
-  url: 'URL',
-  version: 'VERSION',
-  login: 'LOGIN',
-  name: 'NAME',
-  username: 'USERNAME',
-  userid: 'USERID',
-  notesCount: 'NOTES_COUNT',
-  followersCount: 'FOLLOWERS_COUNT',
-  followingCount: 'FOLLOWING_COUNT',
-  isCat: 'IS_CAT',
-  seed: 'SEED',
-  ymd: 'YMD',
-  aiScriptDisabled: 'AISCRIPT_DISABLED',
-  null: 'NULL',
+  ai: '{AI}',
+  url: '{URL}',
+  version: '{VERSION}',
+  login: '{LOGIN}',
+  name: '{NAME}',
+  username: '{USERNAME}',
+  userid: '{USERID}',
+  notesCount: '{NOTES_COUNT}',
+  followersCount: '{FOLLOWERS_COUNT}',
+  followingCount: '{FOLLOWING_COUNT}',
+  isCat: '{IS_CAT}',
+  seed: '{SEED}',
+  ymd: '{YMD}',
+  aiScriptDisabled: '{AISCRIPT_DISABLED}',
+  null: '{NULL}',
 }
 ```
