@@ -7,9 +7,9 @@ export type CanvasOptions = {
 };
 
 export class MPCanvas extends Component {
-    private name: string;
-    private width: number;
-    private height: number;
+    readonly name: string;
+    readonly width: number;
+    readonly height: number;
 
     constructor(options: Partial<CanvasOptions>) {
         super('canvas');

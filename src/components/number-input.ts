@@ -7,9 +7,9 @@ export type NumberInputOptions = {
 };
 
 export class MPNumberInput extends Component {
-    private name: string;
-    private text: string;
-    private default: number;
+    readonly name: string;
+    readonly text: string;
+    readonly default: number;
     constructor(options: Partial<NumberInputOptions>) {
         super('numberInput');
         this.name = options.variableName || '';

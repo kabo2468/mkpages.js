@@ -5,7 +5,7 @@ export type TextOptions = {
 };
 
 export class MPText extends Component {
-    private text: string;
+    readonly text: string;
     constructor(options: Partial<TextOptions>) {
         super('text');
         this.text = options.text || '';

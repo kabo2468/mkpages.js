@@ -8,9 +8,9 @@ export type PostWithCanvasOptions = Partial<PostOptions> & {
 };
 
 export class MPPost extends Component {
-    private text: string;
-    private attachCanvasImage: boolean;
-    private canvasId: string;
+    readonly text: string;
+    readonly attachCanvasImage: boolean;
+    readonly canvasId: string;
 
     constructor(options: Partial<PostOptions>);
     constructor(options: PostWithCanvasOptions);

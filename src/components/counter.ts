@@ -7,9 +7,9 @@ export type CounterOptions = {
 };
 
 export class MPCounter extends Component {
-    private name: string;
-    private text: string;
-    private inc: number;
+    readonly name: string;
+    readonly text: string;
+    readonly inc: number;
     constructor(options: Partial<CounterOptions>) {
         super('counter');
         this.name = options.variableName || '';

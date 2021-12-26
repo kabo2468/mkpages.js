@@ -1,5 +1,5 @@
-import { Component, ComponentTypes } from './component';
-import { toComponent } from './util';
+import { Component } from './component';
+import { ComponentJSONType, toComponent } from './util';
 
 type Fonts = 'serif' | 'sans-serif';
 
@@ -11,7 +11,7 @@ interface JsonBody {
     script: string;
     hideTitleWhenPinned: boolean;
     alignCenter: boolean;
-    content: ComponentTypes[];
+    content: ComponentJSONType[];
     variables: any[];
     eyeCatchingImageId: string | null;
 }

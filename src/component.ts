@@ -25,7 +25,7 @@ export class Component {
     }
 }
 
-export type ComponentTypes = (
+export type ComponentTypes =
     | (DialogOptions & { type: 'button' })
     | (ResetRandomOptions & { type: 'button' })
     | (PushEventOptions & { type: 'button' })
@@ -43,5 +43,4 @@ export type ComponentTypes = (
     | (TextOptions & { type: 'text' })
     | (TextInputOptions & { type: 'textInput' })
     | (TextareaOptions & { type: 'textarea' })
-    | (TextareaInputOptions & { type: 'textareaInput' })
-) & { type: string; id: string };
+    | (TextareaInputOptions & { type: 'textareaInput' });

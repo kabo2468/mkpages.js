@@ -5,7 +5,7 @@ export type ImageOptions = {
 };
 
 export class MPImage extends Component {
-    private fileId: string;
+    readonly fileId: string;
     constructor(options: Partial<ImageOptions>) {
         super('image');
         this.fileId = options.fileId || '';

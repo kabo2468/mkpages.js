@@ -7,9 +7,9 @@ export type SwitchOptions = {
 };
 
 export class MPSwitch extends Component {
-    private name: string;
-    private text: string;
-    private default: boolean;
+    readonly name: string;
+    readonly text: string;
+    readonly default: boolean;
     constructor(options: Partial<SwitchOptions>) {
         super('switch');
         this.name = options.variableName || '';

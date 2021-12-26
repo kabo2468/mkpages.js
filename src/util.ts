@@ -1,4 +1,4 @@
-import { Component, ComponentTypes } from './component';
+import { Component } from './component';
 import { MPButton } from './components/button';
 import { MPCanvas } from './components/canvas';
 import { MPCounter } from './components/counter';
@@ -15,56 +15,68 @@ import { MPTextInput } from './components/text-input';
 import { MPTextarea } from './components/textarea';
 import { MPTextareaInput } from './components/textarea-input';
 
-export function toComponent(obj: ComponentTypes): Component {
-    switch (obj.type) {
+type Props<T> = {
+    [K in keyof T]: T[K];
+};
+
+export type ComponentJSONType =
+    | (Props<MPButton> & { type: 'button' })
+    | (Props<MPCanvas> & { type: 'canvas' })
+    | (Props<MPCounter> & { type: 'counter' })
+    | (Omit<MPIf, 'children'> & { type: 'if'; children: ComponentJSONType[] })
+    | (Props<MPImage> & { type: 'image' })
+    | (Props<MPNote> & { type: 'note' })
+    | (Props<MPNumberInput> & { type: 'numberInput' })
+    | (Props<MPPost> & { type: 'post' })
+    | (Props<MPRadioButton> & { type: 'radioButton' })
+    | (Omit<MPSection, 'children' | 'addComponents'> & { type: 'section'; children: ComponentJSONType[] })
+    | (Props<MPSwitch> & { type: 'switch' })
+    | (Props<MPText> & { type: 'text' })
+    | (Props<MPTextInput> & { type: 'textInput' })
+    | (Props<MPTextarea> & { type: 'textarea' })
+    | (Props<MPTextareaInput> & { type: 'textareaInput' });
+
+export function toComponent(json: ComponentJSONType): Component {
+    switch (json.type) {
         case 'button':
-            switch (obj.action) {
-                case 'dialog':
-                    return new MPButton(obj);
-                case 'pushEvent':
-                    return new MPButton(obj);
-                case 'resetRandom':
-                    return new MPButton(obj);
-                case 'callAiScript':
-                    return new MPButton(obj);
-            }
+            return Object.assign(new MPButton({}), json);
         case 'canvas':
-            return new MPCanvas(obj);
+            return Object.assign(new MPCanvas({}), json);
         case 'counter':
-            return new MPCounter(obj);
+            return Object.assign(new MPCounter({}), json);
         case 'if':
             const ifData = {
-                id: obj.id,
-                var: obj.variableName,
-                children: obj.children.map((child) => toComponent(child)),
+                id: json.id,
+                var: json.var,
+                children: json.children?.map((child) => toComponent(child)),
             };
-            return new MPIf(ifData);
+            return Object.assign(new MPIf({}), ifData);
         case 'image':
-            return new MPImage(obj);
+            return Object.assign(new MPImage({}), json);
         case 'note':
-            return new MPNote(obj);
+            return Object.assign(new MPNote({}), json);
         case 'numberInput':
-            return new MPNumberInput(obj);
+            return Object.assign(new MPNumberInput({}), json);
         case 'post':
-            return new MPPost(obj);
+            return Object.assign(new MPPost({}), json);
         case 'radioButton':
-            return new MPRadioButton(obj);
+            return Object.assign(new MPRadioButton({}), json);
         case 'section':
             const sectionData = {
-                id: obj.id,
-                title: obj.title,
-                children: obj.children.map((child) => toComponent(child)),
+                id: json.id,
+                title: json.title,
+                children: json.children?.map((child) => toComponent(child)),
             };
-            return new MPSection(sectionData);
+            return Object.assign(new MPSection({}), sectionData);
         case 'switch':
-            return new MPSwitch(obj);
+            return Object.assign(new MPSwitch({}), json);
         case 'textInput':
-            return new MPTextInput(obj);
+            return Object.assign(new MPTextInput({}), json);
         case 'text':
-            return new MPText(obj);
+            return Object.assign(new MPText({}), json);
         case 'textareaInput':
-            return new MPTextareaInput(obj);
+            return Object.assign(new MPTextareaInput({}), json);
         case 'textarea':
-            return new MPTextarea(obj);
+            return Object.assign(new MPTextarea({}), json);
     }
 }

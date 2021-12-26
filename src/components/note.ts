@@ -6,8 +6,8 @@ export type NoteOptions = {
 };
 
 export class MPNote extends Component {
-    private note: string;
-    private detailed: boolean;
+    readonly note: string;
+    readonly detailed: boolean;
 
     constructor(options: Partial<NoteOptions>) {
         super('note');

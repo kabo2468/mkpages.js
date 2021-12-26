@@ -6,8 +6,8 @@ export type SectionOptions = {
 };
 
 export class MPSection extends Component {
-    private title: string;
-    private children: Component[];
+    readonly title: string;
+    readonly children: Component[];
     constructor(options: Partial<SectionOptions>) {
         super('section');
         this.title = options.title || '';

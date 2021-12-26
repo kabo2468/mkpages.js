@@ -26,14 +26,14 @@ export type CallAiScriptOptions = ButtonOptions & {
 };
 
 export class MPButton extends Component {
-    private text: string;
-    private action: Actions;
-    private primary: boolean;
-    private content: string | null = null;
-    private event: string | null = null;
-    private message: string | null = null;
-    private var: string | null = null;
-    private fn: string | null = null;
+    readonly text: string;
+    readonly action: Actions;
+    readonly primary: boolean;
+    readonly content?: string | null = null;
+    readonly event?: string | null = null;
+    readonly message?: string | null = null;
+    readonly var?: string | null = null;
+    readonly fn?: string | null = null;
 
     constructor(options: Partial<DialogOptions>);
     constructor(options: Partial<ResetRandomOptions>);

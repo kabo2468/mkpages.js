@@ -8,10 +8,10 @@ export type RadioButtonOptions = {
 };
 
 export class MPRadioButton extends Component {
-    private name: string;
-    private title: string;
-    private values: string[];
-    private default: string;
+    readonly name: string;
+    readonly title: string;
+    readonly values: string[];
+    readonly default: string;
     constructor(options: Partial<RadioButtonOptions>) {
         super('radioButton');
         this.name = options.variableName || '';

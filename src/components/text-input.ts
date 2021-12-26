@@ -7,9 +7,9 @@ export type TextInputOptions = {
 };
 
 export class MPTextInput extends Component {
-    private name: string;
-    private text: string;
-    private default: string;
+    readonly name: string;
+    readonly text: string;
+    readonly default: string;
     constructor(options: Partial<TextInputOptions>) {
         super('textInput');
         this.name = options.variableName || '';

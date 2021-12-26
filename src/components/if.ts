@@ -6,8 +6,8 @@ export type IfOptions = {
 };
 
 export class MPIf extends Component {
-    private var: string;
-    private children: Component[];
+    readonly var: string;
+    readonly children: Component[];
     constructor(options: Partial<IfOptions>) {
         super('if');
         this.var = options.variableName || '';
