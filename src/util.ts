@@ -48,7 +48,7 @@ export function toComponent(json: ComponentJSONType): Component {
             const ifData = {
                 id: json.id,
                 var: json.var,
-                children: json.children?.map((child) => toComponent(child)),
+                children: json.children.map((child) => toComponent(child)),
             };
             return Object.assign(new MPIf({}), ifData);
         case 'image':
@@ -65,7 +65,7 @@ export function toComponent(json: ComponentJSONType): Component {
             const sectionData = {
                 id: json.id,
                 title: json.title,
-                children: json.children?.map((child) => toComponent(child)),
+                children: json.children.map((child) => toComponent(child)),
             };
             return Object.assign(new MPSection({}), sectionData);
         case 'switch':
