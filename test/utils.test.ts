@@ -28,7 +28,7 @@ describe('Utils', () => {
                 action: 'dialog',
                 content: 'Dialog Content',
                 primary: true,
-                title: 'Button',
+                text: 'Button',
             });
             expect(component).toBeInstanceOf(MPButton);
         });
@@ -40,8 +40,8 @@ describe('Utils', () => {
                 event: 'event',
                 message: 'Pushed',
                 primary: true,
-                title: 'Button',
-                variable: 'variable',
+                text: 'Button',
+                var: 'variable',
             });
             expect(component).toBeInstanceOf(MPButton);
         });
@@ -50,7 +50,7 @@ describe('Utils', () => {
                 type: 'button',
                 id,
                 action: 'resetRandom',
-                title: 'Button',
+                text: 'Button',
                 primary: true,
             });
             expect(component).toBeInstanceOf(MPButton);
@@ -60,9 +60,9 @@ describe('Utils', () => {
                 type: 'button',
                 id,
                 action: 'callAiScript',
-                functionName: 'fnName',
+                fn: 'fnName',
                 primary: true,
-                title: 'Button',
+                text: 'Button',
             });
             expect(component).toBeInstanceOf(MPButton);
         });
@@ -70,7 +70,7 @@ describe('Utils', () => {
             const component = toComponent({
                 type: 'canvas',
                 id,
-                canvasId: 'canvasId',
+                name: 'canvasId',
                 height: 200,
                 width: 300,
             });
@@ -80,9 +80,9 @@ describe('Utils', () => {
             const component = toComponent({
                 type: 'counter',
                 id,
-                increaseValue: 1,
-                title: 'Counter',
-                variableName: 'variable',
+                inc: 1,
+                text: 'Counter',
+                name: 'variable',
             });
             expect(component).toBeInstanceOf(MPCounter);
         });
@@ -91,7 +91,7 @@ describe('Utils', () => {
                 type: 'if',
                 id,
                 children: [],
-                variableName: 'variable',
+                var: 'variable',
             });
             expect(component).toBeInstanceOf(MPIf);
         });
@@ -116,9 +116,9 @@ describe('Utils', () => {
             const component = toComponent({
                 type: 'numberInput',
                 id,
-                defaultValue: 0,
-                title: 'Number Input',
-                variableName: 'variable',
+                default: 0,
+                text: 'Number Input',
+                name: 'variable',
             });
             expect(component).toBeInstanceOf(MPNumberInput);
         });
@@ -128,6 +128,7 @@ describe('Utils', () => {
                 id,
                 canvasId: 'canvasId',
                 text: 'Post',
+                attachCanvasImage: true,
             });
             expect(component).toBeInstanceOf(MPPost);
         });
@@ -135,10 +136,10 @@ describe('Utils', () => {
             const component = toComponent({
                 type: 'radioButton',
                 id,
-                defaultValue: '1',
+                default: '1',
                 title: 'Radio Button',
                 values: ['1', '2', '3'],
-                variableName: 'variable',
+                name: 'variable',
             });
             expect(component).toBeInstanceOf(MPRadioButton);
         });
@@ -155,9 +156,9 @@ describe('Utils', () => {
             const component = toComponent({
                 type: 'switch',
                 id,
-                defaultValue: true,
-                title: 'Switch',
-                variableName: 'variable',
+                default: true,
+                text: 'Switch',
+                name: 'variable',
             });
             expect(component).toBeInstanceOf(MPSwitch);
         });
@@ -165,9 +166,9 @@ describe('Utils', () => {
             const component = toComponent({
                 type: 'textInput',
                 id,
-                defaultValue: 'Text',
-                title: 'Text Input',
-                variableName: 'variable',
+                default: 'Text',
+                text: 'Text Input',
+                name: 'variable',
             });
             expect(component).toBeInstanceOf(MPTextInput);
         });
@@ -183,9 +184,9 @@ describe('Utils', () => {
             const component = toComponent({
                 type: 'textareaInput',
                 id,
-                defaultValue: 'Textarea',
-                title: 'Textarea',
-                variableName: 'variable',
+                default: 'Textarea',
+                text: 'Textarea',
+                name: 'variable',
             });
             expect(component).toBeInstanceOf(MPTextareaInput);
         });
