@@ -22,11 +22,26 @@ describe('Utils', () => {
             });
             expect(component).toBeInstanceOf(MPNote);
         });
-        test('Section', () => {
+        test('Section (No children)', () => {
             const component = toComponent({
                 type: 'section',
                 id,
                 children: [],
+                title: 'Section',
+            });
+            expect(component).toBeInstanceOf(MPSection);
+        });
+        test('Section (Has children)', () => {
+            const component = toComponent({
+                type: 'section',
+                id,
+                children: [
+                    {
+                        type: 'image',
+                        id,
+                        fileId: 'fileId',
+                    },
+                ],
                 title: 'Section',
             });
             expect(component).toBeInstanceOf(MPSection);
