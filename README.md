@@ -2,6 +2,8 @@
 
 A library for building Misskey Pages.
 
+v2 for Misskey v13, v1 for Misskey v12
+
 ## Installation
 
 ```bash
