@@ -15,7 +15,7 @@ npm install mkpages.js
 <https://misskey.io/@kabo/pages/1640543620758>
 
 ```javascript
-const { MkPages, MPText, MPEnvVars } = require('mkpages.js');
+const { MkPages, MPText } = require('mkpages.js');
 
 // Build the page.
 const page = new MkPages()
