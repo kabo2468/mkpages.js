@@ -2,8 +2,6 @@
 
 A library for building Misskey Pages.
 
-**Variables is NOT implemented because [Pages function will be updated](https://github.com/misskey-dev/misskey/issues/8034).**
-
 ## Installation
 
 ```bash
@@ -15,7 +13,7 @@ npm install mkpages.js
 <https://misskey.io/@kabo/pages/1640543620758>
 
 ```javascript
-const { MkPages, MPButton, MPPost, MPText, MPEnvVars } = require('mkpages.js');
+const { MkPages, MPText, MPEnvVars } = require('mkpages.js');
 
 // Build the page.
 const page = new MkPages()
@@ -23,8 +21,7 @@ const page = new MkPages()
   .setAlignCenter(true)
   .addComponents(
     new MPText({ text: 'Text' }),
-    new MPButton({ action: 'dialog', title: 'Button', content: 'Dialog Content' }),
-    new MPPost({ text: `Post Form\nExamples: https://github.com/kabo2468/mkpages.js\n\n${MPEnvVars.url}` })
+    new MPText({ text: 'Text2' })
   );
 
 // Page to Object.
@@ -60,8 +57,6 @@ get urlName(): string;
 get title(): string;
 get summary(): string | null;
 get content(): Component[];
-get variables(): any[]; // Not implemented
-get script(): string;
 get eyeCatchingImageId(): string | null;
 get font(): Fonts;
 get alignCenter(): boolean;
@@ -71,8 +66,6 @@ setUrlName(value: string);
 setTitle(value: string);
 setSummary(value: string);
 setContent(value: Component[]);
-setVariables(value: any[]); // Not implemented
-setScript(value: string);
 setEyeCatchingImageId(value: string);
 setFont(value: Fonts);
 setAlignCenter(value: boolean);
@@ -82,69 +75,6 @@ removeComponent(index: number);
 ```
 
 ### Components
-
-#### MPButton
-
-```typescript
-// Dialog button
-new MPButton({
-  action: 'dialog',
-  title: string,
-  primary: boolean,
-  content: string,
-});
-// Reset random button
-new MPButton({
-  action: 'resetRandom',
-  title: string,
-  primary: boolean,
-});
-// Push event button
-new MPButton({
-  action: 'pushEvent',
-  title: string,
-  primary: boolean,
-  event: string,
-  message: string,
-  variable: string,
-});
-// Call AiScript button
-new MPButton({
-  action: 'callAiScript',
-  title: string,
-  primary: boolean,
-  functionName: string,
-});
-```
-
-#### MPCanvas
-
-```typescript
-new MPCanvas({
-  canvasId: string,
-  width: number,
-  height: number,
-});
-```
-
-#### MPCounter
-
-```typescript
-new MPCounter({
-  variableName: string,
-  title: string,
-  increaseValue: number,
-});
-```
-
-#### MPIf
-
-```typescript
-new MPIf({
-  variableName: string,
-  children: Component[],
-});
-```
 
 #### MPImage
 
@@ -163,40 +93,6 @@ new MPNote({
 });
 ```
 
-#### MPNumberInput
-
-```typescript
-new MPNumberInput({
-  variableName: string,
-  title: string,
-  defaultValue: number,
-});
-```
-
-#### MPPost
-
-```typescript
-// Without canvas image
-new MPPost({
-  text: string,
-});
-// With canvas image
-new MPPost({
-  text: string,
-  canvasId: string,
-});
-```
-
-#### MPRadioButton
-
-```typescript
-new MPRadioButton({
-  variableName: string,
-  title: string,
-  values: string[],
-  defaultValue: string,
-});
-```
 
 #### MPSection
 
@@ -207,49 +103,11 @@ new MPSection({
 });
 ```
 
-#### MPSwitch
-
-```typescript
-new MPSwitch({
-  variableName: string,
-  title: string,
-  defaultValue: boolean,
-});
-```
-
 #### MPText
 
 ```typescript
 new MPText({
   text: string,
-});
-```
-
-#### MPTextInput
-
-```typescript
-new MPTextInput({
-  variableName: string,
-  title: string,
-  defaultValue: string,
-});
-```
-
-#### MPTextarea
-
-```typescript
-new MPTextarea({
-  text: string,
-});
-```
-
-#### MPTextareaInput
-
-```typescript
-new MPTextareaInput({
-  variableName: string,
-  title: string,
-  defaultValue: string,
 });
 ```
 
