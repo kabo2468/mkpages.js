@@ -1,6 +1,6 @@
 {
   "name": "mkpages.js",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Misskey Pages Builder for JavaScript/TypeScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
