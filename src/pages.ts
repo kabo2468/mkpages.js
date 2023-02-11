@@ -8,11 +8,11 @@ interface JsonBody {
     name: string;
     summary: string | null;
     font: Fonts;
-    script: string;
+    script: '';
     hideTitleWhenPinned: boolean;
     alignCenter: boolean;
     content: ComponentJSONType[];
-    variables: any[];
+    variables: [];
     eyeCatchingImageId: string | null;
 }
 
@@ -21,8 +21,8 @@ export class MkPages {
     private _title: string;
     private _summary: string | null;
     private _content: Component[];
-    private _variables: any[];
-    private _script: string;
+    private _variables: [];
+    private _script: '';
     private _eyeCatchingImageId: string | null;
     private _font: Fonts;
     private _alignCenter: boolean;
@@ -47,7 +47,6 @@ export class MkPages {
             this._title = json.title;
             this._summary = json.summary;
             this._content = json.content.map((ct) => toComponent(ct));
-            // TODO: 変数
             this._variables = json.variables;
             this._script = json.script;
             this._eyeCatchingImageId = json.eyeCatchingImageId;
@@ -59,7 +58,6 @@ export class MkPages {
             this._title = '';
             this._summary = null;
             this._content = [];
-            // TODO: 変数
             this._variables = [];
             this._script = '';
             this._eyeCatchingImageId = null;
@@ -96,12 +94,6 @@ export class MkPages {
     get content(): Component[] {
         return this._content;
     }
-    get variables(): any[] {
-        return this._variables;
-    }
-    get script(): string {
-        return this._script;
-    }
     get eyeCatchingImageId(): string | null {
         return this._eyeCatchingImageId;
     }
@@ -129,14 +121,6 @@ export class MkPages {
     }
     setContent(value: Component[]): MkPages {
         this._content = value;
-        return this;
-    }
-    setVariables(value: any[]): MkPages {
-        this._variables = value;
-        return this;
-    }
-    setScript(value: string): MkPages {
-        this._script = value;
         return this;
     }
     setEyeCatchingImageId(value: string | null): MkPages {

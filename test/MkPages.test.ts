@@ -54,54 +54,6 @@ describe('MkPages', () => {
                     text: 'misskey',
                     type: 'text',
                 },
-                {
-                    id: 'f248dd85-0695-4a9e-b39f-ff6e67d6f8a4',
-                    type: 'button',
-                    text: 'dialogTitle',
-                    action: 'dialog',
-                    content: 'naiyou',
-                    event: null,
-                    message: null,
-                    primary: false,
-                    var: null,
-                    fn: null,
-                },
-                {
-                    id: '952230dc-2c8e-4f39-b556-8aca131ec11d',
-                    type: 'button',
-                    text: 'randomTitle',
-                    action: 'resetRandom',
-                    content: null,
-                    event: null,
-                    message: null,
-                    primary: false,
-                    var: null,
-                    fn: null,
-                },
-                {
-                    id: '20af3ce7-d880-419e-809b-3f6eef91c816',
-                    type: 'button',
-                    text: 'eventTitle',
-                    action: 'pushEvent',
-                    content: null,
-                    event: 'eventName',
-                    message: 'pushedMes',
-                    primary: false,
-                    var: 'AI',
-                    fn: null,
-                },
-                {
-                    id: '53151d76-aae0-4195-8efd-09d71008f721',
-                    type: 'button',
-                    text: 'asTitle',
-                    action: 'callAiScript',
-                    content: null,
-                    event: null,
-                    message: null,
-                    primary: false,
-                    var: null,
-                    fn: 'fnName',
-                },
             ],
             variables: [],
             eyeCatchingImageId: null,
@@ -131,16 +83,6 @@ describe('MkPages', () => {
     test('Empty Content', () => {
         const page = new MkPages().setContent([]);
         expect(page.content).toStrictEqual([]);
-    });
-
-    test('Empty Variables', () => {
-        const page = new MkPages().setVariables([]);
-        expect(page.variables).toStrictEqual([]);
-    });
-
-    test('Script', () => {
-        const page = new MkPages().setScript('<: "Hello world"');
-        expect(page.script).toBe('<: "Hello world"');
     });
 
     test('Eye Catching Image Id', () => {
