@@ -16,18 +16,22 @@ export type ComponentJSONType =
 
 export function toComponent(json: ComponentJSONType): Component {
     switch (json.type) {
-        case 'image':
+        case 'image': {
             return Object.assign(new MPImage({}), json);
-        case 'note':
+        }
+        case 'note': {
             return Object.assign(new MPNote({}), json);
-        case 'section':
+        }
+        case 'section': {
             const sectionData = {
                 id: json.id,
                 title: json.title,
                 children: json.children.map((child) => toComponent(child)),
             };
             return Object.assign(new MPSection({}), sectionData);
-        case 'text':
+        }
+        case 'text': {
             return Object.assign(new MPText({}), json);
+        }
     }
 }
