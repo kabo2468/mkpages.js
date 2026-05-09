@@ -130,7 +130,7 @@ describe('MkPages', () => {
         const page = new MkPages().addComponents(
             new MPText({ text: 'Text1' }),
             new MPText({ text: 'Text2' }),
-            new MPText({ text: 'Text3' })
+            new MPText({ text: 'Text3' }),
         );
         page.removeComponent(1);
         expect(page.toObject().content).toEqual([

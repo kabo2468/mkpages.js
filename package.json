@@ -12,7 +12,8 @@
     "clean": "node -e \"fs.rmSync('lib', {recursive: true, force: true})\"",
     "build": "pnpm run clean && tsc",
     "prepack": "pnpm run test && pnpm run build",
-    "test": "jest"
+    "test": "jest",
+    "lint": "biome check"
   },
   "repository": {
     "type": "git",
@@ -27,14 +28,10 @@
   },
   "homepage": "https://github.com/kabo2468/mkpages.js",
   "devDependencies": {
+    "@biomejs/biome": "2.4.14",
     "@types/jest": "^30.0.0",
     "@types/node": "^24",
-    "@typescript-eslint/eslint-plugin": "^8.59.2",
-    "@typescript-eslint/parser": "^8.59.2",
-    "eslint": "^10.3.0",
-    "eslint-config-prettier": "10.1.8",
     "jest": "^30.4.0",
-    "prettier": "3.8.3",
     "ts-jest": "^29.4.9",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3"
