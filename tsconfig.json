@@ -22,6 +22,7 @@
     "node_modules",
     "lib",
     "test/**/*",
+    "vitest.config.ts",
     "ex/**/*"
   ]
 }

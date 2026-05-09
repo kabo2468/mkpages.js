@@ -1,9 +1,0 @@
-{
-    "collectCoverage": true,
-    "coverageDirectory": "coverage",
-    "coverageProvider": "v8",
-    "roots": ["<rootDir>"],
-    "transform": {
-        "^.+\\.(ts|tsx)$": "ts-jest"
-    }
-}

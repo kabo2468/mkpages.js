@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 import { MkPages, MPText } from '../src';
 
 describe('MkPages', () => {
