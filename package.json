@@ -10,8 +10,8 @@
   ],
   "scripts": {
     "clean": "node -e \"fs.rmSync('lib', {recursive: true, force: true})\"",
-    "build": "npm run clean && tsc",
-    "prepack": "run-s test build",
+    "build": "pnpm run clean && tsc",
+    "prepack": "pnpm run test && pnpm run build",
     "test": "jest"
   },
   "repository": {
