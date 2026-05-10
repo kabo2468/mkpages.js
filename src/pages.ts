@@ -1,5 +1,5 @@
-import { Component } from './component';
-import { ComponentJSONType, toComponent } from './util';
+import type { Component } from './component';
+import { type ComponentJSONType, toComponent } from './util';
 
 type Fonts = 'serif' | 'sans-serif';
 

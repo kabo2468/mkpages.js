@@ -1,4 +1,4 @@
-import { Component } from './component';
+import type { Component } from './component';
 import { MPImage } from './components/image';
 import { MPNote } from './components/note';
 import { MPSection } from './components/section';
