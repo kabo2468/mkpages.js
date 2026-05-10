@@ -1,6 +1,6 @@
 {
   "name": "mkpages.js",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Misskey Pages Builder for JavaScript/TypeScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -18,7 +18,7 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
- },
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kabo2468/mkpages.js.git"
