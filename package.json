@@ -15,6 +15,10 @@
     "test": "vitest run",
     "lint": "biome check"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+ },
   "repository": {
     "type": "git",
     "url": "https://github.com/kabo2468/mkpages.js.git"
